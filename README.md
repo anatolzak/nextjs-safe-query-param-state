@@ -44,6 +44,7 @@ const schema = z.object({ count: z.coerce.number() })
 // current url - /about?hello=world
 function Component() {
   const [params, createSafeURL] = useSafeSearchParams(schema)
+
   const incrementCountUrl = createSafeURL({ count: params.count + 1 }) // -> /about?hello=world&count=1
 
   const incrementCountHandler = () => {
