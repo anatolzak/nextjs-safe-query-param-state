@@ -2,7 +2,7 @@
 
 Many applications benefit from storing certain state in the URL search params. This allows the user to reload the page without losing their previous state.
 
-However, having to sync state between local state and search params can be painful and very prones to bugs.
+However, having to sync state between local state and search params can be painful and very prone to bugs.
 
 This example repo showcases a `useSafeSearchParams` hook that helps storing state in search params with validation using Zod, fallbacks, and E2E type safety.
 
