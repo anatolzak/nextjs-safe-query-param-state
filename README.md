@@ -13,7 +13,7 @@ Simply pass a zod object schema to `useSafeSearchParams`.
 ```typescript
 const schema = z.object({ count: z.coerce.number() })
 
-function Component {
+function Component() {
   const [params] = useSafeSearchParams(schema)
   params.count // number
 }
@@ -42,7 +42,7 @@ In order to update the search params, `useSearchParams` returns a second value, 
 const schema = z.object({ count: z.coerce.number() })
 
 // current url - /about?hello=world
-function Component {
+function Component() {
   const [params, createSafeURL] = useSafeSearchParams(schema)
   const incrementCountUrl = createSafeURL({ count: params.count + 1 }) // -> /about?hello=world&count=1
 
