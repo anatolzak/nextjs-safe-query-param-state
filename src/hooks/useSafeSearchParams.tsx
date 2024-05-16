@@ -8,7 +8,7 @@ import { z } from 'zod';
  *
  * @template T - The Zod schema type extending AnyZodObject.
  * @param {T} schema - The Zod schema to validate the search parameters against.
- * @returns {[z.infer<T>, (newParams: z.infer<T>) => string]} A tuple where the first element is the parsed search parameters matching the schema, and the second element is a function to create a URL with updated search parameters.
+ * @returns {[z.infer<T>, (newParams: Partial<z.infer<T>>) => string]} A tuple where the first element is the parsed search parameters matching the schema, and the second element is a function to create a URL with updated search parameters.
  *
  * @example
  * const mySchema = z.object({ count: z.coerce.number() })
@@ -18,7 +18,7 @@ import { z } from 'zod';
  */
 export const useSafeSearchParams = <T extends z.AnyZodObject>(
   schema: T,
-): [z.infer<T>, (newParams: z.infer<T>) => string] => {
+): [z.infer<T>, (newParams: Partial<z.infer<T>>) => string] => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -27,7 +27,7 @@ export const useSafeSearchParams = <T extends z.AnyZodObject>(
   }, [schema, searchParams]);
 
   const createSafeURL = useCallback(
-    (newParams: z.infer<T>): string => {
+    (newParams: Partial<z.infer<T>>): string => {
       const updatedParams = new URLSearchParams(searchParams);
 
       for (const key in newParams) {
