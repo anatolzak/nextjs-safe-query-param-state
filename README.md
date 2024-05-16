@@ -79,7 +79,7 @@ import { z } from 'zod';
  * @returns {[z.infer<T>, (newParams: z.infer<T>) => string]} A tuple where the first element is the parsed search parameters matching the schema, and the second element is a function to create a URL with updated search parameters.
  *
  * @example
- * const mySchema = z.object({ count: z.number() })
+ * const mySchema = z.object({ count: z.coerce.number() })
  * const [params, createURL] = useSafeSearchParams(mySchema);
  * params.count; // number
  * const incrementedCountUrl = createURL({ count: params.count + 1 });
