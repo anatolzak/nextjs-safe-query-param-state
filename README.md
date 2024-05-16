@@ -1,4 +1,4 @@
-# Store State in Search Params With Validation & Type Safety
+# Store State in Search Params with Enhanced Validation & Type Safety
 
 Many applications benefit from storing certain state in the URL search params. This allows the user to reload the page without losing their previous state.
 
